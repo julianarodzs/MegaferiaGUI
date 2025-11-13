@@ -19,6 +19,10 @@ public class Narrator extends Person {
         this.books = new ArrayList<>();
     }
     
+    public int getBookQuantity() {
+        return this.books.size();
+    }
+    
     public void addBook(Audiobook book) {
         this.books.add(book);
     }

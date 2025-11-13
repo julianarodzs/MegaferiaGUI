@@ -7,6 +7,7 @@ package core;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.util.ArrayList;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -722,12 +723,27 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
         jButton5.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jButton5.setText("Agregar Editorial");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jButton6.setText("Crear");
+        jButton6.setText("Comprar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jButton7.setText("Eliminar Editorial");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
@@ -737,9 +753,19 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
         jButton10.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jButton10.setText("Agregar Stand");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         jButton11.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jButton11.setText("Eliminar Stand");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jTextArea3.setColumns(20);
         jTextArea3.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
@@ -823,7 +849,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "NIT", "Nombre", "Dirección", "Nombre gerente", "Nro. Stands"
+                "NIT", "Nombre", "Dirección", "Nombre Gerente", "Nro. Stands"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -837,7 +863,12 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jTable1);
 
         jButton12.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jButton12.setText("Crear");
+        jButton12.setText("Consultar");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -887,7 +918,12 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         jScrollPane5.setViewportView(jTable2);
 
         jButton13.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jButton13.setText("Crear");
+        jButton13.setText("Consultar");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -937,7 +973,13 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         jScrollPane6.setViewportView(jTable3);
 
         jButton14.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jButton14.setText("Crear");
+        jButton14.setText("Consultar");
+        jButton14.setToolTipText("");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -973,7 +1015,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Titulo", "Autores", "ISBN", "Genero", "Formato", "Valor", "Editorial", "Nro. Ejem", "Nro. Pag", "URL", "Narradores", "Duración"
+                "Titulo", "Autores", "ISBN", "Genero", "Formato", "Valor", "Editorial", "Nro. Ejem", "Nro. Pag", "URL", "Narrador", "Duración"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -987,10 +1029,15 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         jScrollPane7.setViewportView(jTable4);
 
         jButton15.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jButton15.setText("Crear");
+        jButton15.setText("Consultar");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
 
         jComboBox9.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno..." }));
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione uno...", "Libros Impresos", "Libros Digitales", "Audiolibros", "Todos los Libros" }));
 
         jLabel25.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel25.setText("Libros");
@@ -1307,6 +1354,119 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             this.books.add(new Audiobook(title, authors, isbn, genre, format, value, publisher, duration, narrator));
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        String stand = jComboBox7.getItemAt(jComboBox7.getSelectedIndex());
+        jTextArea3.append(stand + "\n");
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+        String stand = jComboBox7.getItemAt(jComboBox7.getSelectedIndex());
+        jTextArea3.setText(jTextArea3.getText().replace(stand + "\n", ""));
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        String publisher = jComboBox8.getItemAt(jComboBox8.getSelectedIndex());
+        jTextArea1.append(publisher + "\n");
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        String publisher = jComboBox8.getItemAt(jComboBox8.getSelectedIndex());
+        jTextArea1.setText(jTextArea1.getText().replace(publisher + "\n", ""));
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        String[] standIds = jTextArea3.getText().split("\n");
+        String[] publishersData = jTextArea1.getText().split("\n");
+        
+        ArrayList<Stand> stands = new ArrayList<>();
+        for (String standId : standIds) {
+            for (Stand stand : this.stands) {
+                if (stand.getId() == Long.parseLong(standId)) {
+                    stands.add(stand);
+                }
+            }
+        }
+        
+        ArrayList<Publisher> publishers = new ArrayList<>();
+        for (String publisherData : publishersData) {
+            String publisherNit = publisherData.split(" ")[1].replace("(", "").replace(")", "");
+            for (Publisher publisher : this.publishers) {
+                if (publisher.getNit().equals(publisherNit)) {
+                    publishers.add(publisher);
+                }
+            }
+        }
+        
+        for (Stand stand : stands) {
+            for (Publisher publisher : publishers) {
+                stand.addPublisher(publisher);
+                publisher.addStand(stand);
+            }
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        for (Publisher publisher : this.publishers) {
+            model.addRow(new Object[]{publisher.getNit(), publisher.getName(), publisher.getAddress(), publisher.getManager().getFullname(), publisher.getStandQuantity()});
+        }
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
+        for (Author author : this.authors) {
+            model.addRow(new Object[]{author.getId(), author.getFullname(), "Autor", "-", author.getBookQuantity()});
+        }
+        for (Manager manager : this.managers) {
+            model.addRow(new Object[]{manager.getId(), manager.getFullname(), "Gerente", manager.getPublisher().getName(), 0});
+        }
+        for (Narrator narrator : this.narrators) {
+            model.addRow(new Object[]{narrator.getId(), narrator.getFullname(), "Narrador", "-", narrator.getBookQuantity()});
+        }
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        model.setRowCount(0);
+        for (Stand stand : this.stands) {
+            String publishers = "";
+            if (stand.getPublisherQuantity() > 0) {
+                publishers += stand.getPublishers().get(0).getName();
+                for (int i = 1; i < stand.getPublisherQuantity(); i++) {
+                    publishers += (", " + stand.getPublishers().get(i).getName());
+                }
+            }
+            model.addRow(new Object[]{stand.getId(), stand.getPrice(), stand.getPublisherQuantity() > 0 ? "Si" : "No", publishers});
+        }
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        // TODO add your handling code here:
+        String search = jComboBox9.getItemAt(jComboBox9.getSelectedIndex());
+        if (search.equals("Libros Impresos")) {
+            
+        }
+        if (search.equals("Libros Digitales")) {
+            
+        }
+        if (search.equals("Audiolibros")) {
+            
+        }
+        if (search.equals("Todos los Libros")) {
+            
+        }
+    }//GEN-LAST:event_jButton15ActionPerformed
 
     /**
      * @param args the command line arguments

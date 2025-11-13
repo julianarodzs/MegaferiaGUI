@@ -19,6 +19,10 @@ public class Author extends Person {
         this.books = new ArrayList<>();
     }
     
+    public int getBookQuantity() {
+        return this.books.size();
+    }
+    
     public void addBook(Book book) {
         this.books.add(book);
     }

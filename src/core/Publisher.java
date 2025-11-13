@@ -46,6 +46,10 @@ public class Publisher {
         return manager;
     }
     
+    public int getStandQuantity() {
+        return this.stands.size();
+    }
+    
     public void addBook(Book book) {
         this.books.add(book);
     }

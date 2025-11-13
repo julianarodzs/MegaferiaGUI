@@ -29,5 +29,17 @@ public class Stand {
     public long getId() {
         return id;
     }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public ArrayList<Publisher> getPublishers() {
+        return publishers;
+    }
+    
+    public int getPublisherQuantity() {
+        return this.publishers.size();
+    }
     
 }

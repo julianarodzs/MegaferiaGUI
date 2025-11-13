@@ -1182,14 +1182,20 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Agregar Editorial"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton6">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Crear"/>
+                    <Property name="text" type="java.lang.String" value="Comprar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton7">
                   <Properties>
@@ -1198,6 +1204,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Eliminar Editorial"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane1">
                   <AuxValues>
@@ -1225,6 +1234,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Agregar Stand"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton10ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton11">
                   <Properties>
@@ -1233,6 +1245,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Eliminar Stand"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton11ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane3">
                   <AuxValues>
@@ -1309,7 +1324,7 @@
                             <Column editable="false" title="NIT" type="java.lang.Object"/>
                             <Column editable="false" title="Nombre" type="java.lang.Object"/>
                             <Column editable="false" title="Direcci&#xf3;n" type="java.lang.Object"/>
-                            <Column editable="false" title="Nombre gerente" type="java.lang.Object"/>
+                            <Column editable="false" title="Nombre Gerente" type="java.lang.Object"/>
                             <Column editable="false" title="Nro. Stands" type="java.lang.Object"/>
                           </Table>
                         </Property>
@@ -1322,8 +1337,11 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Crear"/>
+                    <Property name="text" type="java.lang.String" value="Consultar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton12ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1394,8 +1412,11 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Crear"/>
+                    <Property name="text" type="java.lang.String" value="Consultar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton13ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1465,8 +1486,12 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Crear"/>
+                    <Property name="text" type="java.lang.String" value="Consultar"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton14ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1542,7 +1567,7 @@
                             <Column editable="false" title="Nro. Ejem" type="java.lang.Object"/>
                             <Column editable="false" title="Nro. Pag" type="java.lang.Object"/>
                             <Column editable="false" title="URL" type="java.lang.Object"/>
-                            <Column editable="false" title="Narradores" type="java.lang.Object"/>
+                            <Column editable="false" title="Narrador" type="java.lang.Object"/>
                             <Column editable="false" title="Duraci&#xf3;n" type="java.lang.Object"/>
                           </Table>
                         </Property>
@@ -1587,8 +1612,11 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Crear"/>
+                    <Property name="text" type="java.lang.String" value="Consultar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton15ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="jComboBox9">
                   <Properties>
@@ -1596,8 +1624,12 @@
                       <Font name="Yu Gothic UI" size="18" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
+                      <StringArray count="5">
                         <StringItem index="0" value="Seleccione uno..."/>
+                        <StringItem index="1" value="Libros Impresos"/>
+                        <StringItem index="2" value="Libros Digitales"/>
+                        <StringItem index="3" value="Audiolibros"/>
+                        <StringItem index="4" value="Todos los Libros"/>
                       </StringArray>
                     </Property>
                   </Properties>
