@@ -4,18 +4,22 @@
  */
 package core.view;
 
-import com.formdev.flatlaf.FlatDarkLaf;
-import core.model.Audiobook;
-import core.model.Author;
-import core.model.Book;
-import core.model.DigitalBook;
-import core.model.Manager;
-import core.model.Narrator;
-import core.model.PrintedBook;
+import core.controller.AutorController;
+import core.controller.GerenteController;
+import core.controller.NarradorController;
+import core.controller.StandController;
+import core.controller.utils.Response;
+import core.model.libro.Audiobook;
+import core.model.persona.Author;
+import core.model.libro.Book;
+import core.model.libro.DigitalBook;
+import core.model.persona.Manager;
+import core.model.persona.Narrator;
+import core.model.libro.PrintedBook;
 import core.model.Publisher;
 import core.model.Stand;
 import java.util.ArrayList;
-import javax.swing.UIManager;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,25 +29,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MegaferiaFrame extends javax.swing.JFrame {
 
-    private ArrayList<Stand> stands;
-    private ArrayList<Author> authors;
-    private ArrayList<Manager> managers;
-    private ArrayList<Narrator> narrators;
-    private ArrayList<Publisher> publishers;
-    private ArrayList<Book> books;
-    
     /**
      * Creates new form MegaferiaFrame
      */
     public MegaferiaFrame() {
         initComponents();
         setLocationRelativeTo(null);
-        this.stands = new ArrayList<>();
-        this.authors = new ArrayList<>();
-        this.managers = new ArrayList<>();
-        this.narrators = new ArrayList<>();
-        this.publishers = new ArrayList<>();
-        this.books = new ArrayList<>();
+
     }
 
     /**
@@ -1325,7 +1317,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             urltxtlibro.setEnabled(false);
             duraciontxtlibro.setEnabled(true);
             narradorselectlibro.setEnabled(true);
-            
+
             formatoselectlibro.removeAllItems();
             formatoselectlibro.addItem("Seleccione uno...");
             formatoselectlibro.addItem("MP3");
@@ -1365,7 +1357,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             urltxtlibro.setEnabled(false);
             duraciontxtlibro.setEnabled(false);
             narradorselectlibro.setEnabled(false);
-            
+
             formatoselectlibro.removeAllItems();
             formatoselectlibro.addItem("Seleccione uno...");
             formatoselectlibro.addItem("Pasta dura");
@@ -1382,7 +1374,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             urltxtlibro.setEnabled(true);
             duraciontxtlibro.setEnabled(false);
             narradorselectlibro.setEnabled(false);
-            
+
             formatoselectlibro.removeAllItems();
             formatoselectlibro.addItem("Seleccione uno...");
             formatoselectlibro.addItem("EPUB");
@@ -1394,46 +1386,83 @@ public class MegaferiaFrame extends javax.swing.JFrame {
 
     private void standbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_standbtnActionPerformed
         // TODO add your handling code here:
-        long id = Long.parseLong(idtxtstand.getText());
-        double price = Double.parseDouble(preciotxtstand.getText());
-        
-        this.stands.add(new Stand(id, price));
-        
-        standsselectcomprarstand.addItem("" + id);
+        String id = idtxtstand.getText();
+        String price = preciotxtstand.getText();
+
+        Response response = StandController.addStand(id, price);
+
+        if (response.getStatus() >= 500) {
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
+        } else if (response.getStatus() >= 400) {
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Response Message", JOptionPane.INFORMATION_MESSAGE);
+            idtxtstand.setText("");
+            preciotxtstand.setText("");
+            standsselectcomprarstand.addItem("" + id);
+        }
+
     }//GEN-LAST:event_standbtnActionPerformed
 
     private void crearautorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearautorActionPerformed
         // TODO add your handling code here:
-        long id = Long.parseLong(idtztpersona.getText());
+        String id = idtztpersona.getText();
         String firstname = nombretxtpersona.getText();
         String lastname = apellidotxtpersona.getText();
-        
-        this.authors.add(new Author(id, firstname, lastname));
-        
+
+        Response response = AutorController.addAutor(id, firstname, lastname);
+
+        if (response.getStatus() >= 500) {
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
+        } else if (response.getStatus() >= 400) {
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Response Message", JOptionPane.INFORMATION_MESSAGE);
+            idtxtstand.setText("");
+            preciotxtstand.setText("");
+            standsselectcomprarstand.addItem("" + id);
+        }
+
         aoutoresselectlibro.addItem(id + " - " + firstname + " " + lastname);
         autorselectconadd.addItem(id + " - " + firstname + " " + lastname);
     }//GEN-LAST:event_crearautorActionPerformed
 
     private void creargerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creargerenteActionPerformed
         // TODO add your handling code here:
-        long id = Long.parseLong(idtztpersona.getText());
+        String id = idtztpersona.getText();
         String firstname = nombretxtpersona.getText();
         String lastname = apellidotxtpersona.getText();
-        
-        this.managers.add(new Manager(id, firstname, lastname));
-        
-        gerenteselecteditorial.addItem(id + " - " + firstname + " " + lastname);
+
+        Response response = GerenteController.addGerente(id, firstname, lastname);
+
+        if (response.getStatus() >= 500) {
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
+        } else if (response.getStatus() >= 400) {
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Response Message", JOptionPane.INFORMATION_MESSAGE);
+            gerenteselecteditorial.addItem(id + " - " + firstname + " " + lastname);
+        }
+
+
     }//GEN-LAST:event_creargerenteActionPerformed
 
     private void crearnarradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearnarradorActionPerformed
         // TODO add your handling code here:
-        long id = Long.parseLong(idtztpersona.getText());
+        String id = idtztpersona.getText();
         String firstname = nombretxtpersona.getText();
         String lastname = apellidotxtpersona.getText();
-        
-        this.narrators.add(new Narrator(id, firstname, lastname));
-        
-        narradorselectlibro.addItem(id + " - " + firstname + " " + lastname);
+
+        Response response = NarradorController.addNarrador(id, firstname, lastname);
+
+        if (response.getStatus() >= 500) {
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
+        } else if (response.getStatus() >= 400) {
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Error " + response.getStatus(), JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Response Message", JOptionPane.INFORMATION_MESSAGE);
+            narradorselectlibro.addItem(id + " - " + firstname + " " + lastname);
+        }
     }//GEN-LAST:event_crearnarradorActionPerformed
 
     private void creareditorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creareditorialActionPerformed
@@ -1442,18 +1471,11 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String name = nombretxteditorial.getText();
         String address = direcciontxteditorial.getText();
         String[] managerData = gerenteselecteditorial.getItemAt(gerenteselecteditorial.getSelectedIndex()).split(" - ");
+
         
-        long managerId = Long.parseLong(managerData[0]);
-        
-        Manager manager = null;
-        for (Manager manag : this.managers) {
-            if (manag.getId() == managerId) {
-                manager = manag;
-            }
-        }
-        
+
         this.publishers.add(new Publisher(nit, name, address, manager));
-        
+
         editorialselectlibro.addItem(name + " (" + nit + ")");
         editorialesselectcomprarlibro.addItem(name + " (" + nit + ")");
     }//GEN-LAST:event_creareditorialActionPerformed
@@ -1479,7 +1501,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String format = formatoselectlibro.getItemAt(formatoselectlibro.getSelectedIndex());
         double value = Double.parseDouble(valortxtlibro.getText());
         String publisherData = editorialselectlibro.getItemAt(editorialselectlibro.getSelectedIndex());
-        
+
         ArrayList<Author> authors = new ArrayList<>();
         for (String authorData : authorsData) {
             long authorId = Long.parseLong(authorData.split(" - ")[0]);
@@ -1489,20 +1511,20 @@ public class MegaferiaFrame extends javax.swing.JFrame {
                 }
             }
         }
-        
+
         String publisherNit = publisherData.split(" ")[1].replace("(", "").replace(")", "");
-        
+
         Publisher publisher = null;
         for (Publisher publish : this.publishers) {
             if (publish.getNit().equals(publisherNit)) {
                 publisher = publish;
             }
         }
-        
+
         if (impresoradio.isSelected()) {
             int pages = Integer.parseInt(paginastxtlibro.getText());
             int copies = Integer.parseInt(cantidadtxtlibro.getText());
-            
+
             this.books.add(new PrintedBook(title, authors, isbn, genre, format, value, publisher, pages, copies));
         }
         if (digitalradio.isSelected()) {
@@ -1516,16 +1538,16 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         if (audioradio.isSelected()) {
             int duration = Integer.parseInt(duraciontxtlibro.getText());
             String[] narratorData = narradorselectlibro.getItemAt(narradorselectlibro.getSelectedIndex()).split(" - ");
-            
+
             long narratorId = Long.parseLong(narratorData[0]);
-            
+
             Narrator narrator = null;
             for (Narrator narrat : this.narrators) {
                 if (narrat.getId() == narratorId) {
                     narrator = narrat;
                 }
             }
-            
+
             this.books.add(new Audiobook(title, authors, isbn, genre, format, value, publisher, duration, narrator));
         }
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -1558,7 +1580,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String[] standIds = standtextareacomprarstand.getText().split("\n");
         String[] publishersData = editorialtextareacomprarstand.getText().split("\n");
-        
+
         ArrayList<Stand> stands = new ArrayList<>();
         for (String standId : standIds) {
             for (Stand stand : this.stands) {
@@ -1567,7 +1589,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
                 }
             }
         }
-        
+
         ArrayList<Publisher> publishers = new ArrayList<>();
         for (String publisherData : publishersData) {
             String publisherNit = publisherData.split(" ")[1].replace("(", "").replace(")", "");
@@ -1577,7 +1599,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
                 }
             }
         }
-        
+
         for (Stand stand : stands) {
             for (Publisher publisher : publishers) {
                 stand.addPublisher(publisher);
@@ -1629,10 +1651,10 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     private void consultarlibrosbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarlibrosbtnActionPerformed
         // TODO add your handling code here:
         String search = libroselectshowlibros.getItemAt(libroselectshowlibros.getSelectedIndex());
-        
+
         DefaultTableModel model = (DefaultTableModel) librostable.getModel();
         model.setRowCount(0);
-        
+
         if (search.equals("Libros Impresos")) {
             for (Book book : this.books) {
                 if (book instanceof PrintedBook printedBook) {
@@ -1667,7 +1689,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
             }
         }
         if (search.equals("Todos los Libros")) {
-            for (Book book : this.books) { 
+            for (Book book : this.books) {
                 String authors = book.getAuthors().get(0).getFullname();
                 for (int i = 1; i < book.getAuthors().size(); i++) {
                     authors += (", " + book.getAuthors().get(i).getFullname());
@@ -1689,18 +1711,18 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String[] authorData = autorselectconadd.getItemAt(autorselectconadd.getSelectedIndex()).split(" - ");
         long authorId = Long.parseLong(authorData[0]);
-        
+
         Author author = null;
         for (Author auth : this.authors) {
             if (auth.getId() == authorId) {
                 author = auth;
             }
         }
-        
+
         DefaultTableModel model = (DefaultTableModel) librostableconsadd.getModel();
         model.setRowCount(0);
-        
-        for (Book book : author.getBooks()) { 
+
+        for (Book book : author.getBooks()) {
             String authors = book.getAuthors().get(0).getFullname();
             for (int i = 1; i < book.getAuthors().size(); i++) {
                 authors += (", " + book.getAuthors().get(i).getFullname());
@@ -1720,11 +1742,11 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     private void librosformatobtnconaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_librosformatobtnconaddActionPerformed
         // TODO add your handling code here:
         String format = formatoselectconsadd.getItemAt(formatoselectconsadd.getSelectedIndex());
-        
+
         DefaultTableModel model = (DefaultTableModel) librostableconsadd.getModel();
         model.setRowCount(0);
-        
-        for (Book book : this.books) { 
+
+        for (Book book : this.books) {
             if (book.getFormat().equals(format)) {
                 String authors = book.getAuthors().get(0).getFullname();
                 for (int i = 1; i < book.getAuthors().size(); i++) {
@@ -1756,10 +1778,10 @@ public class MegaferiaFrame extends javax.swing.JFrame {
                 authorsMax.add(author);
             }
         }
-        
+
         DefaultTableModel model = (DefaultTableModel) autorestableconsadd.getModel();
         model.setRowCount(0);
-        
+
         for (Author author : authorsMax) {
             model.addRow(new Object[]{author.getId(), author.getFullname(), maxPublishers});
         }
@@ -1768,7 +1790,6 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addeditorialbtncomprarstand;
