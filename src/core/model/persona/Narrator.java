@@ -5,7 +5,7 @@
 package core.model.persona;
 
 import core.model.persona.Person;
-import core.model.libro.Audiobook;
+import core.model.libro.AudioBook;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Narrator extends Person {
     
-    private ArrayList<Audiobook> books;
+    private ArrayList<AudioBook> books;
 
     public Narrator(long id, String firstname, String lastname) {
         super(id, firstname, lastname);
@@ -25,7 +25,7 @@ public class Narrator extends Person {
         return this.books.size();
     }
     
-    public void addBook(Audiobook book) {
+    public void addBook(AudioBook book) {
         this.books.add(book);
     }
     

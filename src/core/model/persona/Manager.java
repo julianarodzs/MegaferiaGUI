@@ -5,7 +5,6 @@
 package core.model.persona;
 
 import core.model.Publisher;
-import core.model.persona.Person;
 
 /**
  *
